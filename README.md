@@ -1,8 +1,8 @@
 # Dandela Site
 
-Marketing / product landing page for **Dandela · Publish Now**, a one-tap app
-that publishes a photo or video to your Facebook Page, Instagram Business, and
-TikTok accounts.
+Marketing / product landing page for **Dandela**, a personal AI knowledge graph
+that captures notes and articles, connects them, and answers your questions with
+grounded, cited answers.
 
 A plain static site (HTML + CSS + vanilla JS, no build step). Deploys straight
 to GitHub Pages.
@@ -68,11 +68,11 @@ The theme follows the **Dandela Brand & UI direction**:
 
 Content is lifted from the app's own README so the page stays accurate:
 
-- Three-step flow: **Pick a file → Stage it → Publish**
-- Supported platforms: Facebook Page, Instagram Business, TikTok
-- Limits: photos ≤ 20 MB (HEIC converted in-browser), H.264 video ≤ 500 MB
-- Security: pgsodium-encrypted tokens at rest, private Supabase Storage bucket
-  with signed URLs, staging objects deleted after every attempt
+- Product: **Personal AI Knowledge Graph** — an external memory
+- Three-step flow: **Capture → Connect → Ask**
+- Sources: text notes and URLs (PDF and images on the roadmap)
+- Security: RLS-scoped user data, grounded answers with citations, your choice
+  of AI provider (OpenAI, Gemini, or Anthropic)
 
 ## Stack
 

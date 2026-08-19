@@ -362,15 +362,15 @@ a {
   margin: 0;
 }
 
-/* ---------- Platforms ---------- */
+/* ---------- Sources ---------- */
 
-.platform-grid {
+.source-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
 
-.platform-card {
+.source-card {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
@@ -379,13 +379,13 @@ a {
   transition: border-color 0.2s var(--ease), transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
 }
 
-.platform-card:hover {
+.source-card:hover {
   border-color: var(--sky);
   box-shadow: var(--shadow-md);
   transform: translateY(-3px);
 }
 
-.platform-badge {
+.source-badge {
   width: 48px;
   height: 48px;
   display: grid;
@@ -394,27 +394,27 @@ a {
   margin-bottom: 22px;
 }
 
-.platform-badge svg {
+.source-badge svg {
   width: 24px;
   height: 24px;
 }
 
-.platform-badge.fb {
+.source-badge.notes {
   background: #eef2ff;
   color: #2563eb;
 }
 
-.platform-badge.ig {
-  background: #fdf2f8;
-  color: #db2777;
-}
-
-.platform-badge.tt {
+.source-badge.url {
   background: #ecfeff;
   color: #0891b2;
 }
 
-.platform-card h3 {
+.source-badge.media {
+  background: #f5f3ff;
+  color: #7c3aed;
+}
+
+.source-card h3 {
   font-family: var(--font-display);
   font-size: 18px;
   font-weight: 700;
@@ -423,13 +423,13 @@ a {
   margin: 0 0 8px;
 }
 
-.platform-card p {
+.source-card p {
   font-size: 15px;
   color: var(--text-secondary);
   margin: 0;
 }
 
-.platform-note {
+.source-note {
   margin: 28px 0 0;
   font-size: 14px;
   color: var(--text-muted);
@@ -722,7 +722,7 @@ a {
 
 @media (max-width: 920px) {
   .steps,
-  .platform-grid {
+  .source-grid {
     grid-template-columns: 1fr;
   }
 
