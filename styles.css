@@ -521,6 +521,45 @@ a {
   margin: 0;
 }
 
+/* ---------- Contact ---------- */
+
+.contact {
+  text-align: center;
+}
+
+.contact .section-title {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact-text {
+  font-size: 17px;
+  color: var(--text-secondary);
+  max-width: 44ch;
+  margin: 0 auto 28px;
+}
+
+.contact-actions {
+  display: flex;
+  justify-content: center;
+}
+
+.contact-email {
+  margin: 20px 0 0;
+  font-size: 15px;
+}
+
+.contact-email a {
+  color: var(--accent-blue);
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.contact-email a:hover {
+  color: var(--accent-blue-deep);
+}
+
 /* ---------- CTA ---------- */
 
 .cta {
