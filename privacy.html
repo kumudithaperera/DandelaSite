@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Privacy Policy · Dandela</title>
+    <meta
+      name="description"
+      content="How Dandela · Publish Now handles your data: what we store, why, and how it is protected."
+    />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./theme.css" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <nav class="nav container" aria-label="Primary">
+        <a class="brand" href="./index.html#top">
+          <span class="brand-mark" aria-hidden="true">
+            <img src="./logo.svg" alt="" width="30" height="30" />
+          </span>
+          <span class="brand-name">Dandela</span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="./index.html#how">How it works</a></li>
+          <li><a href="./index.html#platforms">Platforms</a></li>
+          <li><a href="./index.html#security">Security</a></li>
+          <li><a href="./privacy.html">Privacy</a></li>
+          <li><a href="./terms.html">Terms</a></li>
+        </ul>
+        <a class="btn btn-primary btn-sm nav-cta" href="./index.html#get-started">Get started</a>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle menu">
+          <span></span><span></span>
+        </button>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="legal">
+        <div class="container legal-inner">
+          <p class="eyebrow">Legal</p>
+          <h1 class="legal-title">Privacy Policy</h1>
+          <p class="legal-updated">Last updated: August 2026</p>
+
+          <div class="legal-body">
+            <p>
+              This policy explains what Dandela · Publish Now (“Dandela”, “we”)
+              collects, why we collect it, and how it is protected. Dandela is a
+              single-user app: only you use it, and your data stays yours.
+            </p>
+
+            <h2>What we collect</h2>
+            <ul>
+              <li>
+                <strong>Account credentials.</strong> To publish on your behalf, you
+                connect your Facebook Page, Instagram Business, and TikTok accounts.
+                The access tokens for those accounts are stored and encrypted at rest.
+              </li>
+              <li>
+                <strong>Media you stage.</strong> The photo or video you pick for a
+                post is uploaded to a private storage bucket so we can publish it.
+              </li>
+              <li>
+                <strong>Publish logs.</strong> Each publish attempt records a log row
+                (platform, timestamp, result) so you can see what went out and when.
+              </li>
+              <li>
+                <strong>Basic auth data.</strong> A sign-in identity (email) so only
+                you can access the app.
+              </li>
+            </ul>
+
+            <h2>Why we collect it</h2>
+            <p>
+              Everything we store exists to do one thing: publish your media to the
+              platforms you chose. We do not sell data, show ads, or build profiles.
+            </p>
+
+            <h2>How media is handled</h2>
+            <p>
+              Files you stage are uploaded directly to a private Supabase Storage
+              bucket using signed URLs; they are not kept on the app server. The
+              staged object is always deleted after the publish attempt completes,
+              whether it succeeded or failed. Your account tokens are only readable
+              through scoped <code>security definer</code> database functions and are
+              never sent to your browser.
+            </p>
+
+            <h2>Encryption</h2>
+            <p>
+              Account tokens are encrypted at rest with pgsodium (AEAD). Connections
+              to the app and to the platforms' APIs are encrypted in transit using
+              TLS.
+            </p>
+
+            <h2>Third parties</h2>
+            <p>
+              Dandela shares only what is required to publish a post: your media and
+              the caption are sent to the platform you selected (Meta and/or TikTok).
+              Infrastructure is provided by Supabase (database, storage, auth) and
+              Vercel (hosting), which process data under their own agreements.
+            </p>
+
+            <h2>Retention and deletion</h2>
+            <p>
+              Staging media is deleted after every publish attempt. Publish logs and
+              account connections are kept so the app can function; you can disconnect
+              accounts at any time from Settings. To delete your account and all
+              associated data, contact us at the address below and we will remove it.
+            </p>
+
+            <h2>Your rights</h2>
+            <p>
+              You can disconnect any connected platform at any time. Where applicable
+              law grants you rights over your personal data (access, correction,
+              erasure, portability), you may exercise them by contacting us.
+            </p>
+
+            <h2>Changes</h2>
+            <p>
+              We may update this policy as the app evolves. Material changes will be
+              reflected by a new “Last updated” date at the top of this page.
+            </p>
+
+            <h2>Contact</h2>
+            <p>
+              Questions about this policy? Reach us through the app's Settings page.
+            </p>
+          </div>
+
+          <p class="legal-back"><a href="./index.html">&larr; Back to home</a></p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <a class="brand" href="./index.html#top">
+          <span class="brand-mark" aria-hidden="true">
+            <img src="./logo.svg" alt="" width="30" height="30" />
+          </span>
+          <span class="brand-name">Dandela</span>
+        </a>
+        <p class="footer-note">© 2026 Dandela · Publish Now.</p>
+        <nav class="footer-links" aria-label="Legal">
+          <a href="./privacy.html">Privacy</a>
+          <a href="./terms.html">Terms</a>
+        </nav>
+      </div>
+    </footer>
+
+    <script src="./main.js"></script>
+  </body>
+</html>
