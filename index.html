@@ -6,7 +6,7 @@
     <title>Dandela | Your personal AI knowledge graph</title>
     <meta
       name="description"
-      content="Dandela is a personal AI knowledge graph: an external memory that captures your notes and articles, connects them, and answers your questions with grounded, cited answers."
+      content="Dandela is a personal AI knowledge graph: an external memory that captures your notes and articles, connects them into entities and relationships, and answers your questions with grounded, cited answers."
     />
     <meta property="og:title" content="Dandela · Personal AI Knowledge Graph" />
     <meta
@@ -41,13 +41,12 @@
         </a>
         <ul class="nav-links">
           <li><a href="#how">How it works</a></li>
+          <li><a href="#model">Knowledge model</a></li>
           <li><a href="#sources">Sources</a></li>
+          <li><a href="#retrieval">Retrieval</a></li>
           <li><a href="#security">Security</a></li>
           <li><a href="#contact">Contact</a></li>
-          <li><a href="./privacy.html">Privacy</a></li>
-          <li><a href="./terms.html">Terms</a></li>
         </ul>
-        <a class="btn btn-primary btn-sm nav-cta" href="#get-started">Get started</a>
         <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle menu">
           <span></span><span></span>
         </button>
@@ -57,19 +56,48 @@
     <main id="main">
       <section id="top" class="hero">
         <div class="container hero-inner">
-          <p class="eyebrow reveal">Dandela · Personal AI Knowledge Graph</p>
-          <h1 class="hero-title reveal">
-            An external memory for<br />
-            <span class="hero-accent">everything you learn.</span>
-          </h1>
-          <p class="hero-sub reveal">
-            Capture a note or paste a URL. Dandela extracts the text, maps how your
-            knowledge connects, and answers your questions with grounded,
-            <strong>cited answers</strong>.
-          </p>
-          <div class="hero-actions reveal">
-            <a class="btn btn-primary" href="#get-started">Try Dandela</a>
-            <a class="btn btn-ghost" href="#how">See how it works</a>
+          <div class="hero-copy">
+            <p class="eyebrow reveal">Dandela · Personal AI Knowledge Graph</p>
+            <h1 class="hero-title reveal">
+              An external memory for<br />
+              <span class="hero-accent">everything you learn.</span>
+            </h1>
+            <p class="hero-sub reveal">
+              Capture a note or paste a URL. Dandela extracts the text, maps how your
+              knowledge connects, and answers your questions with grounded,
+              <strong>cited answers</strong>.
+            </p>
+            <div class="hero-actions reveal">
+              <a class="btn btn-primary btn-lg" href="mailto:carbonstroke@gmail.com">Get in touch</a>
+              <span class="hero-meta">Early access · Notes and URLs supported today</span>
+            </div>
+          </div>
+
+          <div class="hero-panel reveal">
+            <div class="panel-bar">
+              <span class="panel-dot" aria-hidden="true"></span>
+              <span class="panel-title">Ask your knowledge</span>
+              <span class="panel-tag">Example</span>
+            </div>
+            <div class="panel-body">
+              <p class="panel-q">
+                <span class="panel-label">Q</span>
+                Why did I pick pgvector over a hosted vector DB?
+              </p>
+              <p class="panel-a">
+                <span class="panel-label alt">A</span>
+                You kept retrieval next to the relational data so hybrid search
+                could merge full-text ranking and cosine similarity in one query,
+                and so row-level security applied to embeddings for free.
+              </p>
+              <div class="panel-cites">
+                <span class="cite-label">Cited from your sources</span>
+                <ul>
+                  <li><span class="cite-type note">note</span> Retrieval design notes</li>
+                  <li><span class="cite-type url">url</span> pgvector: HNSW indexing</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -83,26 +111,121 @@
               <span class="step-num" aria-hidden="true">01</span>
               <h3>Capture</h3>
               <p>
-                Jot a text note or paste a URL. PDFs and images are next.
+                Jot a text note or paste a URL. Dandela fetches the page, strips it
+                to readable text, and hashes the content so the same source is never
+                stored twice.
               </p>
             </li>
             <li class="step reveal">
               <span class="step-num" aria-hidden="true">02</span>
               <h3>Connect</h3>
               <p>
-                Dandela extracts the text, chunks and embeds it, then maps the
-                entities and relationships that tie your knowledge together.
+                Text is split at paragraph boundaries into ~1,200-character chunks
+                with 200 characters of overlap, embedded, then mined for the entities
+                and relationships that tie your knowledge together.
               </p>
             </li>
             <li class="step reveal">
               <span class="step-num" aria-hidden="true">03</span>
               <h3>Ask</h3>
               <p>
-                Search or ask anything. Answers come back grounded in your own
-                sources, with citations you can trace.
+                Search or ask anything. Hybrid retrieval finds the passages, the graph
+                pulls in related sources, and the answer comes back with citations you
+                can trace.
               </p>
             </li>
           </ol>
+
+          <div class="pipeline reveal" aria-label="Ingestion pipeline">
+            <span class="pipe-step">capture</span>
+            <span class="pipe-step">extract text</span>
+            <span class="pipe-step">chunk</span>
+            <span class="pipe-step">embed</span>
+            <span class="pipe-step">extract entities</span>
+            <span class="pipe-step">link relationships</span>
+            <span class="pipe-step is-end">ask</span>
+          </div>
+          <p class="pipeline-note">
+            Every source moves through the same pipeline, with a status you can watch:
+            <code>pending</code> → <code>processing</code> → <code>ready</code>.
+          </p>
+        </div>
+      </section>
+
+      <section id="model" class="section model">
+        <div class="container">
+          <p class="kicker">Knowledge model</p>
+          <h2 class="section-title">Not a folder of notes. A graph.</h2>
+          <p class="section-lead">
+            Most tools store what you saved. Dandela stores what it means — the people,
+            projects, decisions and ideas inside your sources, and the edges between
+            them.
+          </p>
+
+          <div class="model-grid">
+            <article class="model-card reveal">
+              <h3>Sources &amp; chunks</h3>
+              <p>
+                Every capture is kept whole and versioned, then split into embedded
+                chunks so retrieval can land on the exact passage that answers you.
+              </p>
+            </article>
+            <article class="model-card reveal">
+              <h3>Entities</h3>
+              <p>
+                Recurring people, projects, companies and concepts are pulled out and
+                given one canonical name, so ten mentions become one node.
+              </p>
+              <div class="chips">
+                <span class="chip">person</span>
+                <span class="chip">project</span>
+                <span class="chip">company</span>
+                <span class="chip">topic</span>
+                <span class="chip">product</span>
+                <span class="chip">technology</span>
+                <span class="chip">place</span>
+                <span class="chip">event</span>
+                <span class="chip">concept</span>
+              </div>
+            </article>
+            <article class="model-card reveal">
+              <h3>Relationships</h3>
+              <p>
+                Edges are only written when the text supports them, each carrying a
+                confidence score and a link back to the passage it came from.
+              </p>
+              <div class="chips">
+                <span class="chip mono">USES</span>
+                <span class="chip mono">WORKS_ON</span>
+                <span class="chip mono">PART_OF</span>
+                <span class="chip mono">BUILT_WITH</span>
+                <span class="chip mono">LEADS_TO</span>
+                <span class="chip mono">HAS_DECISION</span>
+                <span class="chip mono">RELATED_TO</span>
+              </div>
+            </article>
+            <article class="model-card reveal">
+              <h3>Decisions &amp; events</h3>
+              <p>
+                Choices you made — and when you made them — are recorded against the
+                source that backs them, so you can ask why something is the way it is.
+              </p>
+            </article>
+            <article class="model-card reveal">
+              <h3>Projects</h3>
+              <p>
+                Group everything orbiting a piece of work: the notes, the articles,
+                the decisions, the people involved.
+              </p>
+            </article>
+            <article class="model-card reveal">
+              <h3>Mentions</h3>
+              <p>
+                Each entity remembers every place it appeared, so you can walk from an
+                idea back to every source that touched it.
+              </p>
+            </article>
+          </div>
         </div>
       </section>
 
@@ -120,6 +243,7 @@
               </span>
               <h3>Text notes</h3>
               <p>Paste an idea, a decision, or a passing thought. It stays searchable forever.</p>
+              <p class="source-state ready">Available now</p>
             </article>
             <article class="source-card reveal">
               <span class="source-badge url" aria-hidden="true">
@@ -130,6 +254,7 @@
               </span>
               <h3>URLs</h3>
               <p>Drop in an article and Dandela turns it into knowledge you can search and cite.</p>
+              <p class="source-state ready">Available now</p>
             </article>
             <article class="source-card reveal">
               <span class="source-badge media" aria-hidden="true">
@@ -140,10 +265,78 @@
                 </svg>
               </span>
               <h3>PDFs &amp; images</h3>
-              <p>On the roadmap. Import papers, screenshots, and documents next.</p>
+              <p>Import papers, screenshots and documents — the source model already has a place for them.</p>
+              <p class="source-state next">Next on the roadmap</p>
             </article>
           </div>
-          <p class="source-note">Notes and URLs work today. PDF and image import are next on the roadmap.</p>
+        </div>
+      </section>
+
+      <section id="retrieval" class="section retrieval">
+        <div class="container">
+          <p class="kicker alt">Under the hood</p>
+          <h2 class="retrieval-title">Retrieval that reads like you remember.</h2>
+          <p class="retrieval-lead">
+            Keyword search misses the passage that phrased it differently. Pure vector
+            search misses the exact term. Dandela runs both and merges them, then lets
+            the graph widen the net.
+          </p>
+
+          <div class="spec-grid">
+            <div class="spec reveal">
+              <h3>Hybrid search</h3>
+              <p>
+                PostgreSQL full-text ranking and cosine similarity run over the same
+                chunks, merged and de-duplicated into one ranked result set.
+              </p>
+            </div>
+            <div class="spec reveal">
+              <h3>Graph expansion</h3>
+              <p>
+                Once the best passages are found, Dandela pulls in other sources that
+                share entities with them — context you would not have thought to search
+                for.
+              </p>
+            </div>
+            <div class="spec reveal">
+              <h3>Grounded answers</h3>
+              <p>
+                Answers are written only from retrieved evidence, and each citation is
+                resolved back to the chunk and source it came from.
+              </p>
+            </div>
+            <div class="spec reveal">
+              <h3>Provider-agnostic</h3>
+              <p>
+                OpenAI, Gemini or Anthropic for reasoning; OpenAI or Gemini for
+                embeddings. Every vector is normalised to a single dimension, so you can
+                switch without a rebuild.
+              </p>
+            </div>
+          </div>
+
+          <dl class="stat-row reveal">
+            <div class="stat">
+              <dt>Embedding dimension</dt>
+              <dd>1536</dd>
+            </div>
+            <div class="stat">
+              <dt>Chunk target</dt>
+              <dd>~1,200 chars</dd>
+            </div>
+            <div class="stat">
+              <dt>Chunk overlap</dt>
+              <dd>200 chars</dd>
+            </div>
+            <div class="stat">
+              <dt>Vector index</dt>
+              <dd>HNSW · cosine</dd>
+            </div>
+          </dl>
+
+          <p class="retrieval-stack">
+            Next.js · TypeScript · Tailwind · shadcn/ui · Supabase · Postgres · pgvector
+          </p>
         </div>
       </section>
 
@@ -153,13 +346,14 @@
             <p class="kicker">Privacy by design</p>
             <h2 class="section-title">Your knowledge stays yours.</h2>
             <p class="security-text">
-              Dandela is personal-first. Your sources live in your own space behind
-              row-level security, and every answer is grounded in sources you can
-              trace.
+              Dandela is personal-first. Every table in the knowledge graph is scoped to
+              your account by row-level security in the database itself — not by a check
+              in application code that someone can forget to write.
             </p>
             <ul class="security-list">
-              <li>Your data, scoped to your account (RLS)</li>
+              <li>Row-level security on sources, chunks, entities and edges</li>
               <li>Every answer cites the source it came from</li>
+              <li>No training on your data, no shared index</li>
               <li>AI providers you choose: OpenAI, Gemini, or Anthropic</li>
             </ul>
           </div>
@@ -181,28 +375,12 @@
           <p class="kicker">Contact</p>
           <h2 class="section-title">Have a question or feedback?</h2>
           <p class="contact-text">
-            We'd love to hear from you. Drop us an email and we'll get back to you.
+            Dandela is in early access and being built in the open. Tell us what you'd
+            want it to remember for you.
           </p>
-          <div class="contact-actions">
-            <a class="btn btn-primary btn-lg" href="mailto:carbonstroke@gmail.com">Email us</a>
-          </div>
           <p class="contact-email">
             <a href="mailto:carbonstroke@gmail.com">carbonstroke@gmail.com</a>
           </p>
-        </div>
-      </section>
-
-      <section id="get-started" class="section cta">
-        <div class="container cta-inner reveal">
-          <h2 class="cta-title">Start building your knowledge graph.</h2>
-          <p class="cta-sub">
-            Dandela is in early access. Capture your first note or article, then ask
-            your knowledge anything.
-          </p>
-          <div class="cta-actions">
-            <a class="btn btn-inverse btn-lg" href="#how">Get more info</a>
-            <span class="cta-meta">Next.js · TypeScript · Supabase · pgvector</span>
-          </div>
         </div>
       </section>
     </main>
@@ -219,7 +397,7 @@
           © 2026 Dandela · Personal AI Knowledge Graph.
         </p>
         <nav class="footer-links" aria-label="Legal">
-          <a href="mailto:carbonstroke@gmail.com">Contact</a>
+          <a href="#contact">Contact</a>
           <a href="./privacy.html">Privacy</a>
           <a href="./terms.html">Terms</a>
         </nav>

@@ -66,13 +66,26 @@ The theme follows the **Dandela Brand & UI direction**:
 
 ## Content
 
-Content is lifted from the app's own README so the page stays accurate:
+Content is lifted from the app itself (`Dandela-kg`) so the page stays accurate
+rather than generic. The landing page is content-led — there is one call to
+action on the whole page (the email link), because email is the only real action
+the site supports today.
 
-- Product: **Personal AI Knowledge Graph** — an external memory
-- Three-step flow: **Capture → Connect → Ask**
-- Sources: text notes and URLs (PDF and images on the roadmap)
-- Security: RLS-scoped user data, grounded answers with citations, your choice
-  of AI provider (OpenAI, Gemini, or Anthropic)
+Sections, in order:
+
+1. **Hero** — positioning, plus a worked example of an ask → grounded answer with
+   citations (in place of a second dead-end button)
+2. **How it works** — Capture → Connect → Ask, with the real ingestion pipeline
+   strip and source status states
+3. **Knowledge model** — sources, chunks, entities, relationships, decisions,
+   events, projects, mentions; entity and relationship types as chips
+4. **Sources** — text notes and URLs today, PDF and images next
+5. **Retrieval** — hybrid search (Postgres FTS + pgvector cosine), graph
+   expansion, grounded answers, provider-agnostic AI; chunk/embedding specs
+6. **Security** — RLS-scoped data, citations, your choice of AI provider
+7. **Contact** — a single email address
+
+If the app changes, update these sections rather than adding new CTAs.
 
 ## Stack
 
