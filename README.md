@@ -46,9 +46,9 @@ Or open `index.html` directly in a browser.
 
 ## Pages
 
-- `index.html` — landing page
-- `privacy.html` — privacy policy
-- `terms.html` — terms & conditions
+- `index.html`: landing page
+- `privacy.html`: privacy policy
+- `terms.html`: terms & conditions
 
 ## Brand theme
 
@@ -67,23 +67,23 @@ The theme follows the **Dandela Brand & UI direction**:
 ## Content
 
 Content is lifted from the app itself (`Dandela-kg`) so the page stays accurate
-rather than generic. The landing page is content-led — there is one call to
+rather than generic. The landing page is content-led. There is one call to
 action on the whole page (the email link), because email is the only real action
 the site supports today.
 
 Sections, in order:
 
-1. **Hero** — positioning, plus a worked example of an ask → grounded answer with
-   citations (in place of a second dead-end button)
-2. **How it works** — Capture → Connect → Ask, with the real ingestion pipeline
+1. **Hero**: positioning, plus a worked example of an ask to grounded answer
+   with citations (in place of a second dead-end button)
+2. **How it works**: Capture, Connect, Ask, with the real ingestion pipeline
    strip and source status states
-3. **Knowledge model** — sources, chunks, entities, relationships, decisions,
+3. **Knowledge model**: sources, chunks, entities, relationships, decisions,
    events, projects, mentions; entity and relationship types as chips
-4. **Sources** — text notes and URLs today, PDF and images next
-5. **Retrieval** — hybrid search (Postgres FTS + pgvector cosine), graph
+4. **Sources**: text notes and URLs today, PDF and images next
+5. **Retrieval**: hybrid search (Postgres FTS + pgvector cosine), graph
    expansion, grounded answers, provider-agnostic AI; chunk/embedding specs
-6. **Security** — RLS-scoped data, citations, your choice of AI provider
-7. **Contact** — a single email address
+6. **Security**: RLS-scoped data, citations, your choice of AI provider
+7. **Contact**: a single email address
 
 If the app changes, update these sections rather than adding new CTAs.
 

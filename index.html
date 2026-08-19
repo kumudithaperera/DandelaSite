@@ -82,19 +82,21 @@
             <div class="panel-body">
               <p class="panel-q">
                 <span class="panel-label">Q</span>
-                Why did I pick pgvector over a hosted vector DB?
+                Which project tool did we settle on for client work, and why?
               </p>
               <p class="panel-a">
                 <span class="panel-label alt">A</span>
-                You kept retrieval next to the relational data so hybrid search
-                could merge full-text ranking and cosine similarity in one query,
-                and so row-level security applied to embeddings for free.
+                You shortlisted three in February and picked the one with
+                per-client workspaces, the only must-have on your list. The
+                pricing page you saved put a team of 12 at $96/month, inside the
+                $150 cap you set in the budget meeting.
               </p>
               <div class="panel-cites">
                 <span class="cite-label">Cited from your sources</span>
                 <ul>
-                  <li><span class="cite-type note">note</span> Retrieval design notes</li>
-                  <li><span class="cite-type url">url</span> pgvector: HNSW indexing</li>
+                  <li><span class="cite-type note">note</span> Tool shortlist, February</li>
+                  <li><span class="cite-type url">url</span> Pricing &amp; plans comparison</li>
+                  <li><span class="cite-type note">note</span> Q1 budget meeting</li>
                 </ul>
               </div>
             </div>
@@ -138,12 +140,12 @@
 
           <div class="pipeline reveal" aria-label="Ingestion pipeline">
             <span class="pipe-step">capture</span>
-            <span class="pipe-step">extract text</span>
-            <span class="pipe-step">chunk</span>
-            <span class="pipe-step">embed</span>
-            <span class="pipe-step">extract entities</span>
-            <span class="pipe-step">link relationships</span>
-            <span class="pipe-step is-end">ask</span>
+            <span class="pipe-link"><span class="pipe-arrow" aria-hidden="true">&rarr;</span><span class="pipe-step">extract text</span></span>
+            <span class="pipe-link"><span class="pipe-arrow" aria-hidden="true">&rarr;</span><span class="pipe-step">chunk</span></span>
+            <span class="pipe-link"><span class="pipe-arrow" aria-hidden="true">&rarr;</span><span class="pipe-step">embed</span></span>
+            <span class="pipe-link"><span class="pipe-arrow" aria-hidden="true">&rarr;</span><span class="pipe-step">extract entities</span></span>
+            <span class="pipe-link"><span class="pipe-arrow" aria-hidden="true">&rarr;</span><span class="pipe-step">link relationships</span></span>
+            <span class="pipe-link"><span class="pipe-arrow" aria-hidden="true">&rarr;</span><span class="pipe-step is-end">ask</span></span>
           </div>
           <p class="pipeline-note">
             Every source moves through the same pipeline, with a status you can watch:
@@ -157,7 +159,7 @@
           <p class="kicker">Knowledge model</p>
           <h2 class="section-title">Not a folder of notes. A graph.</h2>
           <p class="section-lead">
-            Most tools store what you saved. Dandela stores what it means — the people,
+            Most tools store what you saved. Dandela stores what it means: the people,
             projects, decisions and ideas inside your sources, and the edges between
             them.
           </p>
@@ -207,7 +209,7 @@
             <article class="model-card reveal">
               <h3>Decisions &amp; events</h3>
               <p>
-                Choices you made — and when you made them — are recorded against the
+                Choices you made, and when you made them, are recorded against the
                 source that backs them, so you can ask why something is the way it is.
               </p>
             </article>
@@ -265,7 +267,7 @@
                 </svg>
               </span>
               <h3>PDFs &amp; images</h3>
-              <p>Import papers, screenshots and documents — the source model already has a place for them.</p>
+              <p>Import papers, screenshots and documents. The source model already has a place for them.</p>
               <p class="source-state next">Next on the roadmap</p>
             </article>
           </div>
@@ -294,7 +296,7 @@
               <h3>Graph expansion</h3>
               <p>
                 Once the best passages are found, Dandela pulls in other sources that
-                share entities with them — context you would not have thought to search
+                share entities with them: context you would not have thought to search
                 for.
               </p>
             </div>
@@ -317,20 +319,44 @@
 
           <dl class="stat-row reveal">
             <div class="stat">
-              <dt>Embedding dimension</dt>
-              <dd>1536</dd>
+              <dt>How your sources are split</dt>
+              <dd>
+                <span class="stat-figure">~1,200 characters</span>
+                <span class="stat-plain">
+                  Roughly two paragraphs per passage, short enough to quote
+                  exactly and long enough to still make sense on its own.
+                </span>
+              </dd>
             </div>
             <div class="stat">
-              <dt>Chunk target</dt>
-              <dd>~1,200 chars</dd>
+              <dt>Why nothing falls through the cracks</dt>
+              <dd>
+                <span class="stat-figure">200 characters shared</span>
+                <span class="stat-plain">
+                  Each passage overlaps the one before it, so a thought that
+                  straddles the boundary is never cut in half.
+                </span>
+              </dd>
             </div>
             <div class="stat">
-              <dt>Chunk overlap</dt>
-              <dd>200 chars</dd>
+              <dt>How meaning is stored</dt>
+              <dd>
+                <span class="stat-figure">1,536 numbers per passage</span>
+                <span class="stat-plain">
+                  Every passage gets a numeric fingerprint of what it is about,
+                  so a search for “burnout” still finds “exhausted at work”.
+                </span>
+              </dd>
             </div>
             <div class="stat">
-              <dt>Vector index</dt>
-              <dd>HNSW · cosine</dd>
+              <dt>How matches are ranked</dt>
+              <dd>
+                <span class="stat-figure">By closest meaning</span>
+                <span class="stat-plain">
+                  Fingerprints pointing in the same direction rank highest, so
+                  the best passage wins even when it shares no keywords.
+                </span>
+              </dd>
             </div>
           </dl>
 
@@ -347,7 +373,7 @@
             <h2 class="section-title">Your knowledge stays yours.</h2>
             <p class="security-text">
               Dandela is personal-first. Every table in the knowledge graph is scoped to
-              your account by row-level security in the database itself — not by a check
+              your account by row-level security in the database itself, not by a check
               in application code that someone can forget to write.
             </p>
             <ul class="security-list">
