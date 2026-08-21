@@ -1,6 +1,8 @@
 (function () {
   "use strict";
 
+  document.documentElement.classList.add("js");
+
   var prefersReducedMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)"
   ).matches;
@@ -18,16 +20,28 @@
   onScroll();
 
   if (navToggle && navLinks) {
+    function setMenu(open) {
+      navToggle.setAttribute("aria-expanded", String(open));
+      navToggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+      navLinks.classList.toggle("is-open", open);
+      navLinks.toggleAttribute("inert", !open);
+    }
+
     navToggle.addEventListener("click", function () {
       var open = navToggle.getAttribute("aria-expanded") === "true";
-      navToggle.setAttribute("aria-expanded", String(!open));
-      navLinks.classList.toggle("is-open", !open);
+      setMenu(!open);
     });
 
     navLinks.addEventListener("click", function (e) {
       if (e.target.closest("a")) {
-        navToggle.setAttribute("aria-expanded", "false");
-        navLinks.classList.remove("is-open");
+        setMenu(false);
+      }
+    });
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && navToggle.getAttribute("aria-expanded") === "true") {
+        setMenu(false);
+        navToggle.focus();
       }
     });
   }

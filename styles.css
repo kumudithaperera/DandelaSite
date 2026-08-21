@@ -1070,7 +1070,7 @@ a {
 
 /* ---------- Reveal on scroll ---------- */
 
-.reveal {
+.js .reveal {
   opacity: 0;
   transform: translateY(18px);
   transition:
@@ -1078,7 +1078,7 @@ a {
     transform 0.7s var(--ease);
 }
 
-.reveal.is-visible {
+.js .reveal.is-visible {
   opacity: 1;
   transform: none;
 }
@@ -1128,14 +1128,17 @@ a {
     padding: 12px 24px 20px;
     transform: translateY(-8px);
     opacity: 0;
+    visibility: hidden;
     pointer-events: none;
-    transition: opacity 0.2s var(--ease), transform 0.2s var(--ease);
+    transition: opacity 0.2s var(--ease), transform 0.2s var(--ease), visibility 0s linear 0.2s;
   }
 
   .nav-links.is-open {
     opacity: 1;
     transform: none;
+    visibility: visible;
     pointer-events: auto;
+    transition: opacity 0.2s var(--ease), transform 0.2s var(--ease), visibility 0s;
   }
 
   .nav-links a {

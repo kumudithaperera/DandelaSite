@@ -26,15 +26,15 @@
 
   /* ---------- Color · Text ---------- */
   --text-primary: #172033; /* headings, primary text */
-  --text-secondary: #64748b; /* secondary text */
-  --text-muted: #94a3b8; /* muted / captions */
+  --text-secondary: #475569; /* secondary text */
+  --text-muted: #64748b; /* muted / captions */
 
   /* ---------- Color · Lines ---------- */
   --border: #e2e8f0;
 
   /* ---------- Color · Status ---------- */
-  --success: #16a34a;
-  --warning: #d97706;
+  --success: #15803d;
+  --warning: #b45309;
   --error: #dc2626;
 
   /* ---------- Typography ---------- */
